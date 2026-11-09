@@ -1,0 +1,24 @@
+clk ReadData1 ReadData2
+0 0 0        # addi x4, x0, -20
+C (-20) 0    # addi x5, x4, 0x7F0      ; x4 = -20
+C 2012 0     # addi x6, x5, 0x701      ; x5 = 2012
+C 3805 0     # addi x7, x6, 0x531      ; x6 = 3805
+C 3805 0     # andi x14, x6, 0x123     ; rs1 = x6
+C 1 0        # andi x15, x14, 0x71C    ; rs1 = x14 = 1
+C 0 0        # andi x17, x15, 0x541    ; rs1 = x15 = 0
+C (-20) 0    # slti x18, x4, 311       ; rs1 = x4
+C 1 0        # slti x19, x18, 2        ; rs1 = x18 = 1
+C 1 0        # slti x20, x19, 0        ; rs1 = x19 = 1
+C 0 0        # slti x21, x20, -3       ; rs1 = x20 = 0
+C 0 2012        # slti x22, x21, 5        ; rs1 = x21 = 0
+C 1 0        # addi x0,  x22, 0        ; rs1 = x22 = 1 (write to x0 ignored)
+C (-20) 0    # slti x23, x4,  -20      ; rs1 = x4
+C 0 0        # addi x0,  x23, 0        ; rs1 = x23 = 0
+C 0 3805        # slti x24, x11, -90      ; x11 was never set, so 0
+C 0 0        # addi x0,  x24, 0        ; rs1 = x24 = 0
+C (-20) 0    # slti x25, x4,  0        ; rs1 = x4
+C 1 0        # addi x0,  x25, 0        ; rs1 = x25 = 1
+C 0 0        # slti x26, x11, 600      ; x11 still 0
+C 1 0        # addi x0,  x26, 0        ; rs1 = x26 = 1
+C (-20) 0    # slti x27, x4,  -1       ; rs1 = x4
+C 1 0        # addi x0,  x27, 0        ; rs1 = x27 = 1
